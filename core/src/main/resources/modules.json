@@ -1,0 +1,6 @@
+{
+  "modules" : [ {
+    "name" : "plugin",
+    "className" : "com.asa.eve.plugin.PluginModule"
+  } ]
+}

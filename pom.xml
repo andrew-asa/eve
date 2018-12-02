@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.asa</groupId>
+    <artifactId>com.asa.eve</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>core</module>
+        <module>plugin</module>
+        <module>i18</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+        <!-- 本地lib路径-->
+        <!--<system.lib.dir>/Users/andrew_asa/Documents/code/github/andrew-asa/lib</system.lib.dir>-->
+        <!--系统maven仓库地址-->
+        <system.maven.dir>file:/Users/andrew_asa/Documents/code/github/andrew-asa/maven-repository/</system.maven.dir>
+    </properties>
+
+    <repositories>
+        <!--<repository>-->
+        <!--<id>andrew.asa-maven-repository</id>-->
+        <!--<url>https://raw.githubusercontent.com/andrew-asa/maven-repository/master/repository</url>-->
+        <!--</repository>-->
+        <repository>
+            <id>andrew.asa-maven-repository</id>
+            <url>file:/Users/andrew_asa/Documents/code/github/andrew-asa/maven-repository/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.asa</groupId>
+            <artifactId>com.asa.third</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.asa</groupId>
+            <artifactId>com.asa.base</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <outputDirectory>/Users/andrew_asa/Documents/code/github/andrew-asa/eve/target/classes</outputDirectory>
+        <testOutputDirectory>/Users/andrew_asa/Documents/code/github/andrew-asa/eve/target/test-classes</testOutputDirectory>
+        <!--<directory>target/jar</directory>-->
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <!--不生成target/generated-sources/annotations-->
+                    <proc>none</proc>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
