@@ -1,4 +1,4 @@
-package com.asa.eve.plugin.start.pinyinhelper;
+package com.asa.eve.internalimp.pinyinhelper;
 
 import org.ahocorasick.trie.Trie;
 

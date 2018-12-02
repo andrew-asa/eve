@@ -41,7 +41,7 @@ public class AppConstant {
         /**
          * 输入框padding
          */
-        public static final int DEFAULT_INPUT_PANEL_PADDING = 5;
+        public static final int DEFAULT_INPUT_PANEL_PADDING = 3;
 
         /**
          * 输入框默认字体大小

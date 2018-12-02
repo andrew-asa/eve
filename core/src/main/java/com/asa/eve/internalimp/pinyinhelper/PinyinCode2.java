@@ -1,4 +1,4 @@
-package com.asa.eve.plugin.start.pinyinhelper;
+package com.asa.eve.internalimp.pinyinhelper;
 
 /**
  * Created by guyacong on 2015/9/28.

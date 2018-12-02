@@ -1,4 +1,4 @@
-package com.asa.eve.plugin.start.pinyinhelper;
+package com.asa.eve.internalimp.pinyinhelper;
 
 import org.ahocorasick.trie.Trie;
 
@@ -41,7 +41,7 @@ public final class Pinyin {
             return;
         }
         mPinyinDicts = Collections.unmodifiableList(config.getPinyinDicts());
-        mTrieDict = com.asa.eve.plugin.start.pinyinhelper.Utils.dictsToTrie(config.getPinyinDicts());
+        mTrieDict = Utils.dictsToTrie(config.getPinyinDicts());
         mSelector = config.getSelector();
     }
 

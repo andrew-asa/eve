@@ -81,6 +81,7 @@ public class SwingOutputPanel implements OutputPanel {
         JScrollPane scr = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scr.setBackground(Color.decode("#616161"));
         scr.setForeground(Color.decode("#616161"));
+        scr.setBorder(BorderFactory.createLineBorder (Color.decode("#616161"), 0));
         scr.addMouseListener(new MouseListener() {
 
             @Override

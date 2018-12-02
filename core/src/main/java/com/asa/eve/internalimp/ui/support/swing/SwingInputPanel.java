@@ -85,6 +85,7 @@ public class SwingInputPanel {
         input.setBackground(Color.decode("#616161"));
         input.setForeground(Color.decode("#ffffff"));
         input.setCaretColor(Color.decode("#ffffff"));
+        //input.setBorder(BorderFactory.createLineBorder (Color.decode("#616161"), 1));
 
         this.input = input;
         this.panel.add(input);

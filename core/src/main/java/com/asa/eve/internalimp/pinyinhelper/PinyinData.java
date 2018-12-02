@@ -1,4 +1,4 @@
-package com.asa.eve.plugin.start.pinyinhelper;
+package com.asa.eve.internalimp.pinyinhelper;
 
 final class PinyinData {
 

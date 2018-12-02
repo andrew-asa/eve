@@ -17,11 +17,17 @@ public class OutputItemDescriptionHelper {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
-    private static final String DEFAULT_KEY = "__default_key__";
+    public static final String DEFAULT_KEY = "__default_key__";
 
-    private static final String DEFAULT_ACTION_NAME = "__default_action_key__";
+    /**
+     * 动作名字
+     */
+    public static final String DEFAULT_ACTION_NAME = "__default_action_key__";
 
-    private static final String DEFAULT_ACTION_INPUT_TEXT = "__default_action_input_text__";
+    /**
+     * 产生动作的文本
+     */
+    public static final String DEFAULT_ACTION_INPUT_TEXT = "__default_action_input_text__";
 
     public static OutputItemDescription safeCreateDefaultItem(Object bean) {
 

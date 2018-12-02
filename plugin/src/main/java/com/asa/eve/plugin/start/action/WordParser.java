@@ -1,6 +1,6 @@
 package com.asa.eve.plugin.start.action;
 
-import com.asa.eve.plugin.start.pinyinhelper.Pinyin;
+import com.asa.eve.internalimp.pinyinhelper.Pinyin;
 import com.asa.utils.StringUtils;
 
 /**

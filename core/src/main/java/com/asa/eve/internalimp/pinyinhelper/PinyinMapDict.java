@@ -1,6 +1,4 @@
-package com.asa.eve.plugin.start.pinyinhelper;
-
-import com.asa.eve.plugin.start.pinyinhelper.*;
+package com.asa.eve.internalimp.pinyinhelper;
 
 import java.util.Map;
 import java.util.Set;
