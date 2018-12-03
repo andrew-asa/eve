@@ -28,4 +28,11 @@ public interface UICreator {
      * @return
      */
     TextPanel createTextPanel();
+
+    /**
+     * 带有icon 的panel
+     *
+     * @return
+     */
+    IconTextPanel createIconTextPanel();
 }

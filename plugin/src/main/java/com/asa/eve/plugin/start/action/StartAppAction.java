@@ -59,6 +59,7 @@ public class StartAppAction extends AbstractInputAction {
                 })
                 .forEach(app -> {
                     OutputItemDescription itemDescription = OutputItemDescriptionHelper.safeCreateDefaultItem(app);
+                    OutputItemDescriptionHelper.connectActionAndOutputItemDescription(this, itemDescription, text);
                     ListUtils.safeAdd(descriptions, itemDescription);
                 });
         return descriptions;

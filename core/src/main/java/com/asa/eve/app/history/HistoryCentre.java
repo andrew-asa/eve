@@ -12,6 +12,21 @@ import java.util.List;
  */
 public class HistoryCentre {
 
+    private static HistoryCentre INSTANCE;
+
+
+    private HistoryCentre() {
+
+    }
+
+    public static HistoryCentre getInstance() {
+
+        if (INSTANCE == null) {
+            INSTANCE = new HistoryCentre();
+        }
+        return INSTANCE;
+    }
+
     public void addHistory(OutputItemDescription history) {
 
     }

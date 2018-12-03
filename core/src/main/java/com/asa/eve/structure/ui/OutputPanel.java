@@ -27,10 +27,10 @@ public interface OutputPanel {
     /**
      * 添加可选项
      *
-     * @param label
+     * @param component
      * @param outputItemDescription
      */
-    void addSelectItem(TextPanel label, OutputItemDescription outputItemDescription);
+    void addSelectItem(Component component, OutputItemDescription outputItemDescription);
 
     /**
      * 获取当前选中项的描述信息

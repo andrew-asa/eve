@@ -3,11 +3,12 @@ package com.asa.eve.internalimp.ui.support.swing;
 import com.asa.eve.app.listener.input.OutputItemDescription;
 import com.asa.eve.app.listener.input.control.InputControlActionManager;
 import com.asa.eve.constant.AppConstant;
+import com.asa.eve.internalimp.ui.support.swing.panel.SwingIconTextPanel;
 import com.asa.eve.internalimp.ui.support.swing.panel.SwingTextPanel;
 import com.asa.eve.structure.app.action.InputControlAction;
 import com.asa.eve.structure.app.action.Model;
+import com.asa.eve.structure.ui.Component;
 import com.asa.eve.structure.ui.OutputPanel;
-import com.asa.eve.structure.ui.TextPanel;
 import com.asa.log.LoggerFactory;
 import com.asa.utils.ListUtils;
 
@@ -36,7 +37,7 @@ public class SwingOutputPanel implements OutputPanel {
 
     private SwingWindow window;
 
-    private List<SwingTextPanel> textPanels;
+    private List<Component> textPanels;
 
     private List<OutputItemDescription> outputItemDescriptions;
 
@@ -81,7 +82,7 @@ public class SwingOutputPanel implements OutputPanel {
         JScrollPane scr = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scr.setBackground(Color.decode("#616161"));
         scr.setForeground(Color.decode("#616161"));
-        scr.setBorder(BorderFactory.createLineBorder (Color.decode("#616161"), 0));
+        scr.setBorder(BorderFactory.createLineBorder(Color.decode("#616161"), 0));
         scr.addMouseListener(new MouseListener() {
 
             @Override
@@ -121,11 +122,14 @@ public class SwingOutputPanel implements OutputPanel {
     }
 
     @Override
-    public void addSelectItem(TextPanel label, OutputItemDescription outputItemDescription) {
+    public void addSelectItem(Component component, OutputItemDescription outputItemDescription) {
 
-        if (label != null && label instanceof SwingTextPanel) {
+        if (component == null) {
+            return;
+        }
+        if (component instanceof SwingTextPanel) {
             int len = ListUtils.length(textPanels);
-            SwingTextPanel textPanel = (SwingTextPanel) label;
+            SwingTextPanel textPanel = (SwingTextPanel) component;
             JTextPane textPane = textPanel.getTextPane();
             textPane.addMouseListener(new MouseListener() {
 
@@ -169,6 +173,9 @@ public class SwingOutputPanel implements OutputPanel {
             panel.add(textPanel.getTextPane());
             textPanels.add(textPanel);
             outputItemDescriptions.add(outputItemDescription);
+        } else if (component instanceof SwingIconTextPanel) {
+            SwingIconTextPanel iconTextPanel = (SwingIconTextPanel) component;
+            panel.add(iconTextPanel.getPanel());
         }
     }
 
@@ -201,8 +208,11 @@ public class SwingOutputPanel implements OutputPanel {
         if (len > 0) {
             if (currentIndex >= 0) {
                 int lastIndex = currentIndex % len;
-                SwingTextPanel lastPanel = textPanels.get(lastIndex);
-                lastPanel.unSelect();
+                Component component = textPanels.get(lastIndex);
+                if (component instanceof SwingTextPanel) {
+                    SwingTextPanel lastPanel = (SwingTextPanel) textPanels.get(lastIndex);
+                    lastPanel.unSelect();
+                }
             }
         }
     }
@@ -211,8 +221,11 @@ public class SwingOutputPanel implements OutputPanel {
 
         int len = ListUtils.length(textPanels);
         if (len > 0 && currentIndex >= 0) {
-            SwingTextPanel currentPanel = textPanels.get(currentIndex);
-            currentPanel.select();
+            Component component = textPanels.get(currentIndex);
+            if (component instanceof SwingTextPanel) {
+                SwingTextPanel currentPanel = (SwingTextPanel) textPanels.get(currentIndex);
+                currentPanel.select();
+            }
         }
     }
 

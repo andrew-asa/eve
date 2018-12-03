@@ -5,6 +5,7 @@ import com.asa.eve.app.listener.input.InputActionManager;
 import com.asa.eve.app.listener.input.OutputItemDescription;
 import com.asa.eve.app.listener.input.OutputItemDescriptionHelper;
 import com.asa.eve.structure.app.InputChangeDispatch;
+import com.asa.eve.structure.ui.Component;
 import com.asa.eve.structure.ui.TextPanel;
 import com.asa.eve.structure.ui.Window;
 import com.asa.utils.ListUtils;
@@ -46,9 +47,8 @@ public class DefaultInputChangeDispatch implements InputChangeDispatch {
                     List<OutputItemDescription> outputItemDescriptions = action.analysis(text);
                     ListUtils.forEach(outputItemDescriptions, item -> {
                         OutputItemDescription itemDescription = item.clone();
-                        OutputItemDescriptionHelper.connectActionAndOutputItemDescription(action, itemDescription, text);
-                        TextPanel label = action.describe(item);
-                        window.getOutputPanel().addSelectItem(label, itemDescription);
+                        Component component = action.describe(item);
+                        window.getOutputPanel().addSelectItem(component, itemDescription);
                     });
                 });
         window.getOutputPanel().selectNextItem();

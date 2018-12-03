@@ -1,17 +1,19 @@
-package com.asa.eve.plugin.jump;
+package com.asa.eve.plugin.history;
 
 import com.asa.eve.app.listener.input.AbstractInputAction;
 
 /**
  * @author andrew_asa
  * @date 2018/12/2.
- * 调到文件夹
+ * 历史建议
  */
-public class JumpToFolder extends AbstractInputAction {
+public class HistoryRecommendAction extends AbstractInputAction {
+
 
     @Override
     public String getActionName() {
 
-        return "jumpToFolder";
+        return "HistoryRecommendAction";
     }
 }
+

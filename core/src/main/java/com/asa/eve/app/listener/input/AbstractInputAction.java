@@ -2,6 +2,7 @@ package com.asa.eve.app.listener.input;
 
 import com.asa.eve.structure.app.action.InputAction;
 import com.asa.eve.structure.app.action.Model;
+import com.asa.eve.structure.ui.Component;
 import com.asa.eve.structure.ui.TextPanel;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public abstract class AbstractInputAction implements InputAction {
     }
 
     @Override
-    public TextPanel describe(OutputItemDescription description) {
+    public Component describe(OutputItemDescription description) {
 
         return null;
     }

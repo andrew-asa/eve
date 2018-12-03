@@ -1,7 +1,9 @@
 package com.asa.eve.internalimp.ui.support.swing;
 
 import com.asa.eve.internalimp.ui.support.swing.label.SwingLabel;
+import com.asa.eve.internalimp.ui.support.swing.panel.SwingIconTextPanel;
 import com.asa.eve.internalimp.ui.support.swing.panel.SwingTextPanel;
+import com.asa.eve.structure.ui.IconTextPanel;
 import com.asa.eve.structure.ui.Label;
 import com.asa.eve.structure.ui.TextPanel;
 import com.asa.eve.structure.ui.UICreator;
@@ -29,5 +31,12 @@ public class SwingUICreator implements UICreator {
     public TextPanel createTextPanel() {
 
         return new SwingTextPanel();
+    }
+
+    @Override
+    public IconTextPanel createIconTextPanel() {
+
+        SwingIconTextPanel iconTextPanel = new SwingIconTextPanel();
+        return iconTextPanel;
     }
 }

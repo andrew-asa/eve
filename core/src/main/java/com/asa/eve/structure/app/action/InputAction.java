@@ -2,6 +2,7 @@ package com.asa.eve.structure.app.action;
 
 import com.asa.eve.app.listener.input.Desire;
 import com.asa.eve.app.listener.input.OutputItemDescription;
+import com.asa.eve.structure.ui.Component;
 import com.asa.eve.structure.ui.TextPanel;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public interface InputAction extends Action {
      *
      * @param description
      */
-    TextPanel describe(OutputItemDescription description);
+    Component describe(OutputItemDescription description);
 
     /**
      * 详细描述具体项

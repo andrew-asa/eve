@@ -17,6 +17,11 @@ public class AppConstant {
          * 属性没有找到
          */
         public static final String UI_PROPERTY_NO_FOUND = "10000002";
+
+        /**
+         * 参数异常
+         */
+        public static final String APP_ILLLEGAL_ARGUMENT = "10000003";
     }
 
     public static final class UI {

@@ -1,5 +1,6 @@
 package com.asa.eve.app.listener.input.control;
 
+import com.asa.eve.app.history.HistoryCentre;
 import com.asa.eve.app.listener.input.InputActionManager;
 import com.asa.eve.app.listener.input.OutputItemDescription;
 import com.asa.eve.constant.AppConstant;
@@ -30,6 +31,7 @@ public class HitSelectOutputItemAction extends AbstractInputControlAction {
         if (action != null) {
             action.apply(outputItemDescription);
             // 保存历史记录
+            HistoryCentre.getInstance().addHistory(outputItemDescription);
         }
     }
 
