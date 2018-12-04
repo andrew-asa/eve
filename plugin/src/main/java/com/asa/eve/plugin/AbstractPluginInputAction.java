@@ -13,7 +13,7 @@ public abstract class AbstractPluginInputAction extends AbstractInputAction {
     public String getActionText(String text) {
 
         if (StringUtils.isNotEmpty(text) && StringUtils.containsIgnoreCase(text, getPluginActionKey())) {
-            return text.substring(StringUtils.length(text));
+            return text.substring(StringUtils.length(getPluginActionKey()));
         }
         return StringUtils.EMPTY;
     }

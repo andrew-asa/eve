@@ -3,8 +3,6 @@ package com.asa.eve.internalimp.ui.support.swing;
 import com.asa.eve.app.listener.input.OutputItemDescription;
 import com.asa.eve.app.listener.input.control.InputControlActionManager;
 import com.asa.eve.constant.AppConstant;
-import com.asa.eve.internalimp.ui.support.swing.panel.SwingIconTextPanel;
-import com.asa.eve.internalimp.ui.support.swing.panel.SwingTextPanel;
 import com.asa.eve.structure.app.action.InputControlAction;
 import com.asa.eve.structure.app.action.Model;
 import com.asa.eve.structure.ui.Component;
@@ -17,7 +15,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -37,7 +34,7 @@ public class SwingOutputPanel implements OutputPanel {
 
     private SwingWindow window;
 
-    private List<Component> textPanels;
+    private List<SwingComponent> itemComponents;
 
     private List<OutputItemDescription> outputItemDescriptions;
 
@@ -67,7 +64,7 @@ public class SwingOutputPanel implements OutputPanel {
     private void resetIndex() {
 
         currentIndex = -1;
-        textPanels = new ArrayList<>();
+        itemComponents = new ArrayList<>();
         outputItemDescriptions = new ArrayList<>();
     }
 
@@ -83,36 +80,6 @@ public class SwingOutputPanel implements OutputPanel {
         scr.setBackground(Color.decode("#616161"));
         scr.setForeground(Color.decode("#616161"));
         scr.setBorder(BorderFactory.createLineBorder(Color.decode("#616161"), 0));
-        scr.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-                LoggerFactory.getLogger().debug("mouse entry out panel");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-                LoggerFactory.getLogger().debug("mouse exited out panel");
-
-            }
-        });
         return scr;
     }
 
@@ -127,11 +94,10 @@ public class SwingOutputPanel implements OutputPanel {
         if (component == null) {
             return;
         }
-        if (component instanceof SwingTextPanel) {
-            int len = ListUtils.length(textPanels);
-            SwingTextPanel textPanel = (SwingTextPanel) component;
-            JTextPane textPane = textPanel.getTextPane();
-            textPane.addMouseListener(new MouseListener() {
+        if (component instanceof SwingComponent) {
+            int len = ListUtils.length(itemComponents);
+            SwingComponent swingComponent = (SwingComponent) component;
+            swingComponent.addMouseListener(new MouseListener() {
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -170,12 +136,9 @@ public class SwingOutputPanel implements OutputPanel {
                     window.setModel(Model.GLOBAL);
                 }
             });
-            panel.add(textPanel.getTextPane());
-            textPanels.add(textPanel);
+            panel.add(swingComponent.getComponent());
             outputItemDescriptions.add(outputItemDescription);
-        } else if (component instanceof SwingIconTextPanel) {
-            SwingIconTextPanel iconTextPanel = (SwingIconTextPanel) component;
-            panel.add(iconTextPanel.getPanel());
+            itemComponents.add(swingComponent);
         }
     }
 
@@ -189,7 +152,7 @@ public class SwingOutputPanel implements OutputPanel {
     @Override
     public OutputItemDescription selectLastItem() {
 
-        int len = ListUtils.length(textPanels);
+        int len = ListUtils.length(itemComponents);
         if (len > 0) {
             unSelectLast();
             if (currentIndex == 0) {
@@ -204,35 +167,29 @@ public class SwingOutputPanel implements OutputPanel {
 
     private void unSelectLast() {
 
-        int len = ListUtils.length(textPanels);
+        int len = ListUtils.length(itemComponents);
         if (len > 0) {
             if (currentIndex >= 0) {
                 int lastIndex = currentIndex % len;
-                Component component = textPanels.get(lastIndex);
-                if (component instanceof SwingTextPanel) {
-                    SwingTextPanel lastPanel = (SwingTextPanel) textPanels.get(lastIndex);
-                    lastPanel.unSelect();
-                }
+                SwingComponent component = itemComponents.get(lastIndex);
+                component.unSelect();
             }
         }
     }
 
     private void selectCurrent() {
 
-        int len = ListUtils.length(textPanels);
+        int len = ListUtils.length(itemComponents);
         if (len > 0 && currentIndex >= 0) {
-            Component component = textPanels.get(currentIndex);
-            if (component instanceof SwingTextPanel) {
-                SwingTextPanel currentPanel = (SwingTextPanel) textPanels.get(currentIndex);
-                currentPanel.select();
-            }
+            SwingComponent component = itemComponents.get(currentIndex);
+            component.select();
         }
     }
 
     @Override
     public OutputItemDescription selectNextItem() {
 
-        int len = ListUtils.length(textPanels);
+        int len = ListUtils.length(itemComponents);
         if (len > 0) {
             unSelectLast();
             currentIndex++;
@@ -245,7 +202,7 @@ public class SwingOutputPanel implements OutputPanel {
     @Override
     public OutputItemDescription getSelectItem() {
 
-        int len = ListUtils.length(textPanels);
+        int len = ListUtils.length(itemComponents);
         if (len > 0) {
             OutputItemDescription outputItemDescription = outputItemDescriptions.get(currentIndex);
             return outputItemDescription;

@@ -6,4 +6,5 @@ package com.asa.eve.structure.ui;
  */
 public interface Component {
 
+
 }

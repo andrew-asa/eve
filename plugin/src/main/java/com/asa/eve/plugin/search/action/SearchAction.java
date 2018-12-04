@@ -44,7 +44,7 @@ public class SearchAction extends AbstractPluginInputAction {
         SearchItem searchItem = new SearchItem();
         searchItem.setAllText(text);
         searchItem.setSearchText(searchText);
-        searchItem.setSearchText(StringUtils.messageFormat(url, searchText));
+        searchItem.setQueryUrl(StringUtils.messageFormat(url, searchText));
         OutputItemDescription itemDescription = OutputItemDescriptionHelper.safeCreateDefaultItem(searchItem);
         OutputItemDescriptionHelper.connectActionAndOutputItemDescription(this, itemDescription, text);
         descriptions.add(itemDescription);

@@ -1,5 +1,6 @@
 package com.asa.eve.internalimp.ui.support.swing.panel;
 
+import com.asa.eve.internalimp.ui.support.swing.SwingComponent;
 import com.asa.eve.structure.ui.Icon;
 import com.asa.eve.structure.ui.IconTextPanel;
 import com.asa.eve.utils.ImageUtils;
@@ -11,14 +12,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
 /**
  * @author andrew_asa
  * @date 2018/12/3.
  */
-public class SwingIconTextPanel implements IconTextPanel {
+public class SwingIconTextPanel implements IconTextPanel, SwingComponent {
 
     private JPanel panel;
 
@@ -122,5 +125,27 @@ public class SwingIconTextPanel implements IconTextPanel {
     public Icon getIcon() {
 
         return icon;
+    }
+
+    @Override
+    public void addMouseListener(MouseListener l) {
+
+        panel.addMouseListener(l);
+    }
+
+    @Override
+    public void select() {
+
+    }
+
+    @Override
+    public void unSelect() {
+
+    }
+
+    @Override
+    public Component getComponent() {
+
+        return panel;
     }
 }
